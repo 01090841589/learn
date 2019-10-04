@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>index</h2>
+    {% for arti in articles %}
+    <p>글 번호: {{ arti.pk }}</p>
+    <p>글 제목: {{ arti.title }}</p>
+    <p>글 내용: {{ arti.content }}</p>
+    <a href="/articles/new">[글 수정]</a>
+    <p></p>
+    <hr>
+    {% endfor %}
+
+
+    <a href="/articles/new">[글 작성]</a>
+{% endblock %}
