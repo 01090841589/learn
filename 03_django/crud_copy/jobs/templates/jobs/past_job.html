@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <h2>{{ person.name }}의 과거 직업은  {{ person.past_job }}</h2>
+    <h3>GIPHY</h3>
+    <img src="{{ image }}" alt="giphy-image">
+
+    <h3>naver image</h3>
+    <img src="{{ naver_image }}" alt="naver-image">
+{% endblock %}

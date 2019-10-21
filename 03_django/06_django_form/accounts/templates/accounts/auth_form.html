@@ -1,0 +1,22 @@
+
+{% load bootstrap4 %}
+
+
+{% if request.resolver_match.url_name == 'signup' %}
+    <h1>SIGN UP</h1>
+{% elif request.resolver_match.url_name == 'login' %}
+    <h1>LOG IN</h1>
+{% elif request.resolver_match.url_name == 'update' %}
+    <h1>UPDATE</h1>
+
+{% else %}
+    <h1>CHANGE PASSWORD</h1>
+{% endif %}
+
+<h1>SIGN UP</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons submit="submit" reset="Cencel" %}
+    {% endbuttons %}
+</form>

@@ -2,6 +2,13 @@
 
 {% block body %}
     <h2 class="text-center">DETAIL</h2>
+    {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.image }}}}" width=300px >
+
+    {% else %}
+
+    {% endif %}
+    <img src="{{ article.image.url }}" alt="{{ article.image }}}}" width=300px >
     <h3>{{ article.pk }}번째 글</h3>
     <hr>
     <p>글 제목: {{ article.title }}</p>
@@ -9,6 +16,25 @@
     <p>글 생성 시각: {{ article.created_at|date:"SHORT_DATE_FORMAT" }}</p>
     <p>글 수정 시각: {{ article.updated_at|date:"M, j, Y" }}</p>
     <hr>
+    <form action="% url 'articles:comments_create' article.pk %">
+        {% csrf_token %}
+        <label for="content">COMMENT</label><br>
+        <input type="text" name="content" id="content">
+        <input type="submit" value="댓글쓰기">
+    </form>
+    {% for comment in article.comments.all %}
+    <p>글 내용: {{ comment.content }}</p>
+    <a href="{% url 'articles:detail' article.pk %}">[상세 글]</a>
+    <hr>
+    {% empty %}
+        <p>댓글이 없다</p>
+
+
+    {% endfor %}
+    <hr>
+    <a href="{%url 'articles:comments_update' article.pk comment.pk}">[댓글 수정]</a>
+
+    <form action="{% url 'articles:delete' article.pk %}">[글 삭제]</form>
     
     <a href="{% url 'articles:edit' article.pk %}"> [편집하기]</a>
     <!-- <a href="/articles/{{ article.pk }}/delete">[글 삭제]</a> -->
