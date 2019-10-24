@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@d63pwqv&kr%jg#z2=8ij6@u++jl67dv02v!9fuukvf4n1*7($'
+SECRET_KEY = '&ga2k0y84yy#0)@1narjd6i=od*1+l7_f@uz6a=lsan(lc$ott'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,18 +29,33 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 INSTALLED_APPS = [
+    
+    'accounts',
+    'articles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'articles',
     'bootstrap4',
+    'django_extensions',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
+
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'articles:index'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# default: AUTH_USER_MODEL = 'auth.User'
+# AUTH_USER_MODEL = '앱이름.모델이름'
+AUTH_USER_MODEL = 'accounts.User'

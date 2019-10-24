@@ -1,0 +1,49 @@
+{% extends 'articles/base.html' %}
+
+
+{% block body %}
+
+<p>작성자 : {{ article.user_id }}</p>
+<p>글 제목 : {{ article.title }}</p>
+<p>글 내용 : {{ article.content }}</p>
+<p></p>
+<hr>
+
+
+
+
+{% if article.user == request.user %}
+<form action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+
+    <input type="submit" value="글 삭제">
+</form>
+{% endif %}
+
+<a href="{% url 'articles:update' article.pk %}">[글 수정]</a>
+<a href="{% url 'articles:index' %}">[메인 페이지]</a>
+
+<form action="{% url 'articles:comments_create' article.pk %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="submit" value="댓글 작성">
+    </form>
+    <p>댓 목록</p>
+    <p>갯수: {{ comments.count}}}</p>
+{% for comment in comments %}
+    {{ comment.created_user }}
+    <p>{{ forloop.revcounter }} :: {{comment.content}}</p>
+    <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+{% csrf_token %}
+{% if comment.created_user == request.user.username %}
+<input type="submit" value="댓글 삭제" class="btn btn-warning">
+{% else %}
+<p> 수정불가 </p>
+{% endif %}
+    </form>
+{% empty %}
+    <p>댓글이없다</p>
+{% endfor %}
+
+
+{% endblock %}

@@ -1,4 +1,8 @@
+{% extends 'articles/base.html' %}
+{% load bootstrap4 %}
 
+
+{% block body %}
 <h1>SIGNUP</h1>
 <form action="" method="POST">
     {% csrf_token %}
@@ -6,3 +10,5 @@
     {% buttons submit="회원가입" reset="Cencel" %}
     {% endbuttons %}
 </form>
+
+{% endblock %}

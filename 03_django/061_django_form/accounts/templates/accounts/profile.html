@@ -1,0 +1,17 @@
+{% extends 'articles/base.html' %}
+{% load bootstrap4 %}
+
+
+{% block body %}
+<h1> {{ person.username }} 님이 작성한 댓글</h1>
+<div class="row">
+    {% with comments=person.comment_set.all %}
+
+
+
+    {% endwith %}
+
+
+</div>
+
+{% endblock %}

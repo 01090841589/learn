@@ -1,7 +1,6 @@
 from django import forms
 from .models import Article, Comment
 
-
 class ArticleForm(forms.ModelForm):
     title = forms.CharField(
         max_length=10,
@@ -9,7 +8,7 @@ class ArticleForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'my-title',
-                'placeholder': 'Enter the title!',
+                'placeholder': 'Enter the title',
             }
         )
     )
@@ -20,16 +19,21 @@ class ArticleForm(forms.ModelForm):
                 'class': 'my-content',
                 'placeholder': 'Enter the content',
                 'rows': 5,
-                'cols':50,
+                'cols': 50,
             }
         )
     )
-
-
     class Meta:
         model = Article
-        fields=('title', 'content',)
-        # fields = '__all__'
+        fields = ('title', 'content', )
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content', )
+
+
         # widgets = {
         #     'title': forms.TextInput(
         #         attrs={
@@ -38,9 +42,9 @@ class ArticleForm(forms.ModelForm):
         #         }
         #     )
         # }
+
+
 # class ArticleForm(forms.Form):
-#     # title = forms.CharField(max_length=20)
-#     # content = forms.CharField()
 #     title = forms.CharField(
 #         max_length=20,
 #         label='제목',
@@ -55,13 +59,9 @@ class ArticleForm(forms.ModelForm):
 #         widget=forms.Textarea(
 #             attrs={
 #                 'class': 'my-content',
-#                 'placeholder': 'Enter the content',
+#                 'placeholder': 'Enter the content!',
 #                 'rows': 5,
-#                 'cols':50,
+#                 'cols': 50,
 #             }
 #         )
 #     )
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('content',)
