@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>MY Shopping List</h1>
+  Enter a new item :<input type="text" id="item-input">
+  <button id="add-button">Add Item</button>
+  <ul id="shopping-list">
+  </ul>
+  <script>
+    const addButton = document.querySelector("#add-button")
+    const input = document.querySelector("#item-input")
+    const shoppingList = document.querySelector('#shopping-list')
+    input.addEventListener("keydown", function(inp){
+      if (inp.key === 'Enter') {
+          // console.log(input.value)
+          // if (input.value !== ''){
+          //   item = document.createElement("li")
+          //   item.innerText = input.value
+          //   shoppingList.append(item)
+          //   input.value = null
+          // }
+      }
+    })
+    addButton.addEventListener('click', function(){
+      console.log(input.value)
+      // if (input.value !== ''){
+        item = document.createElement("li")
+        item.innerText = input.value
+        input.value = null
+        const deleteItem = document.createElement("button")
+        deleteItem.innerText = '삭제'
+        item.append(deleteItem)
+        
+        deleteItem.addEventListener('click', function(){
+          item.remove()
+          console.log(deleteItem)
+        
+        })
+
+        shoppingList.append(item)
+      // }
+    })
+
+  </script>
+
+</body>
+</html>

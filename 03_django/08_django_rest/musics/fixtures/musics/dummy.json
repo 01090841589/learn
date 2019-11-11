@@ -1,0 +1,112 @@
+[
+{
+  "model": "musics.artist",
+  "pk": 1,
+  "fields": {
+    "name": "bob"
+  }
+},
+{
+  "model": "musics.artist",
+  "pk": 2,
+  "fields": {
+    "name": "bab"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 1,
+  "fields": {
+    "artist": 1,
+    "title": "bobob"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 2,
+  "fields": {
+    "artist": 2,
+    "title": "babab"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 3,
+  "fields": {
+    "artist": 1,
+    "title": "bobobob"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 4,
+  "fields": {
+    "artist": 2,
+    "title": "bababab"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 1,
+  "fields": {
+    "music": 1,
+    "content": "love bobob"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 2,
+  "fields": {
+    "music": 1,
+    "content": "like bobob"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 3,
+  "fields": {
+    "music": 2,
+    "content": "hate it"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 4,
+  "fields": {
+    "music": 2,
+    "content": "no way"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 5,
+  "fields": {
+    "music": 3,
+    "content": "bobobob!!"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 6,
+  "fields": {
+    "music": 3,
+    "content": "bobobob wow!"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 7,
+  "fields": {
+    "music": 4,
+    "content": "bababab?"
+  }
+},
+{
+  "model": "musics.comment",
+  "pk": 8,
+  "fields": {
+    "music": 4,
+    "content": "baba baba babab"
+  }
+}
+]
